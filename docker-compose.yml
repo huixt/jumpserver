@@ -1,21 +1,26 @@
-version: '2'
+version: '3'
 services:
   redis:
     image: redis:latest
     container_name: redis
     restart: always
   jumpserver:
-    image: jumpserver/jumpserver:v0.4.0-beta1
+    build: .
     container_name: jumpserver
-    restart: always
+    restart: "no"
     ports:
       - 8080:8080
     depends_on:
       - redis
+    volumes:
+      - .:/opt/jumpserver
+    environment:
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
   coco:
     image: jumpserver/coco:v0.4.0-beta1
     container_name: coco
-    restart: always
+    restart: "no"
     ports:
       - 2222:2222
     depends_on:
@@ -23,7 +28,7 @@ services:
   luna:
     image: jumpserver/luna:v0.4.0-beta1
     container_name: luna
-    restart: always
+    restart: "no"
     ports:
       - 5000:5000
     depends_on:
