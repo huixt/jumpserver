@@ -80,7 +80,7 @@ $(document).ready(function(){
                         .replace('99991938', rowData.name);
                 var connect_btn = '<a href="{% url "applications:terminal-connect" pk=99991937 %}"" class="btn btn-xs btn-warning btn-connect" >{% trans "Connect" %}</a> '
                         .replace('99991937', cellData);
-                var restart_btn = '<a href="{% url "applications:terminal-restart" pk=99991937 %}"" class="btn btn-xs btn-warning btn-connect" >{% trans "restart" %}</a> '
+                var restart_btn = '<a href="{% url "applications:terminal-restart" %}"" class="btn btn-xs btn-warning btn-connect" >{% trans "restart" %}</a> '
                         .replace('99991937', cellData);
                 if (rowData.is_accepted) {
                     {% if user.is_superuser %}

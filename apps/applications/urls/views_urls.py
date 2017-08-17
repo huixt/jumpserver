@@ -18,6 +18,6 @@ urlpatterns = [
         name='terminal-update'),
     url(r'^terminal/(?P<pk>\d+)/modal/accept$', views.TerminalModelAccept.as_view(),
         name='terminal-modal-accept'),
-    url(r'^terminal/(?P<pk>\d+)/update$', views.restart_terminal_view,
+    url(r'^terminal/restart$', views.restart_terminal_view,
         name='terminal-restart'),
 ]
