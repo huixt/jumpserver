@@ -84,9 +84,9 @@ $(document).ready(function(){
                         .replace('99991937', cellData);
                 if (rowData.is_accepted) {
                     {% if user.is_superuser %}
-                    $(td).html(connect_btn + update_btn + delete_btn + restart_btn);
+                    $(td).html(connect_btn + update_btn + delete_btn);
                     {% else %}
-                    $(td).html(connect_btn);
+                    $(td).html(connect_btn + restart_btn);
                     {% endif %}
                 } else {
                     {% if user.is_superuser %}
