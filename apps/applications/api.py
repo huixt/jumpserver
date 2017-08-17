@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 
+#
 
 from collections import OrderedDict
 import copy
@@ -92,6 +92,8 @@ class TerminateConnectionView(APIView):
         for d in data:
             proxy_log_id = d.get('proxy_log_id')
             proxy_log = get_object_or_404(ProxyLog, id=proxy_log_id)
+            proxy_log.is_finished = True
+            proxy_log.save()
             terminal_id = proxy_log.terminal
             if terminal_id in tasks:
                 tasks[terminal_id].append({'name': 'kill_proxy',
