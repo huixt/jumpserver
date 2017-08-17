@@ -1,16 +1,16 @@
 # ~*~ coding: utf-8 ~*~
 #
-
-from django.views.generic import ListView, UpdateView, DeleteView, \
-    DetailView, TemplateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils.translation import ugettext as _
-from django.urls import reverse_lazy, reverse
-
 from common.mixins import JSONResponseMixin
-from .models import Terminal
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
+from django.urls import reverse, reverse_lazy
+from django.utils.translation import ugettext as _
+from django.views.generic import DeleteView, DetailView, ListView, UpdateView
+
 from .forms import TerminalForm
 from .hands import AdminUserRequiredMixin
+from .models import Terminal
 
 
 class TerminalListView(LoginRequiredMixin, ListView):
@@ -113,3 +113,10 @@ class TerminalConnectView(LoginRequiredMixin, DetailView):
 
         kwargs.update(context)
         return super(TerminalConnectView, self).get_context_data(**kwargs)
+
+
+@login_required
+def restart_terminal_view(req):
+    import subprocess
+    subprocess.call(['sudo', 'supervisorctl', 'restart', 'jms:coco'])
+    return JsonResponse({'msg': 'get it'})
