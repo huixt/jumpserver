@@ -94,12 +94,13 @@ class TerminateConnectionView(APIView):
             proxy_log = get_object_or_404(ProxyLog, id=proxy_log_id)
             proxy_log.is_finished = True
             proxy_log.save()
-            terminal_id = proxy_log.terminal
-            if terminal_id in tasks:
-                tasks[terminal_id].append({'name': 'kill_proxy',
-                                           'proxy_log_id': proxy_log_id})
-            else:
-                tasks[terminal_id] = [{'name': 'kill_proxy',
-                                       'proxy_log_id': proxy_log_id}]
+            # 下面的代码，是把要终止的终端放到队列里。但是似乎终止之后，用户就再也连接不上了。有时间要查查问题。暂时先注释掉 @daimon
+            # terminal_id = proxy_log.terminal
+            # if terminal_id in tasks:
+            #     tasks[terminal_id].append({'name': 'kill_proxy',
+            #                                'proxy_log_id': proxy_log_id})
+            # else:
+            #     tasks[terminal_id] = [{'name': 'kill_proxy',
+            #                            'proxy_log_id': proxy_log_id}]
 
         return Response({'msg': 'get it'})
