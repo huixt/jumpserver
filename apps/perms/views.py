@@ -67,7 +67,7 @@ class AssetPermissionCreateView(AdminUserRequiredMixin,
     template_name = 'perms/asset_permission_create_update.html'
     success_url = reverse_lazy('perms:asset-permission-list')
 
-    @transaction.atomic
+    # @transaction.atomic
     def post(self, request, *args, **kwargs):
         return super(AssetPermissionCreateView, self).post(request, *args, **kwargs)
 

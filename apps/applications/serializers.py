@@ -4,8 +4,8 @@
 from django.utils import timezone
 from rest_framework import serializers
 
-from .models import Terminal, TerminalHeatbeat
 from .hands import ProxyLog
+from .models import Terminal, TerminalHeatbeat
 
 
 class TerminalSerializer(serializers.ModelSerializer):
@@ -33,8 +33,10 @@ class TerminalSerializer(serializers.ModelSerializer):
 
 class TerminalHeatbeatSerializer(serializers.ModelSerializer):
     date_start = serializers.DateTimeField
+
     class Meta:
         model = TerminalHeatbeat
+        fields = '__all__'
 
 
 if __name__ == '__main__':

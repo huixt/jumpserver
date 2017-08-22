@@ -125,7 +125,7 @@ if CONFIG.DB_ENGINE == 'sqlite':
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': CONFIG.DB_NAME or os.path.join(BASE_DIR, 'data', 'db.sqlite3'),
-            'ATOMIC_REQUESTS': True,
+            'ATOMIC_REQUESTS': False,
         }
     }
 else:
@@ -137,7 +137,7 @@ else:
             'PORT': CONFIG.DB_PORT,
             'USER': CONFIG.DB_USER,
             'PASSWORD': CONFIG.DB_PASSWORD,
-            'ATOMIC_REQUESTS': True,
+            'ATOMIC_REQUESTS': False,
         }
     }
 

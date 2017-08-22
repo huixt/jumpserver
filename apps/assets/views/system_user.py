@@ -40,7 +40,7 @@ class SystemUserCreateView(AdminUserRequiredMixin, SuccessMessageMixin, CreateVi
     template_name = 'assets/system_user_create.html'
     success_url = reverse_lazy('assets:system-user-list')
 
-    @transaction.atomic
+    # @transaction.atomic
     def post(self, request, *args, **kwargs):
         return super(SystemUserCreateView, self).post(request, *args, **kwargs)
 
