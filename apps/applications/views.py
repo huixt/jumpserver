@@ -118,5 +118,9 @@ class TerminalConnectView(LoginRequiredMixin, DetailView):
 @login_required
 def restart_terminal_view(req):
     import subprocess
+    from django.core.mail import send_mail
+    from django.conf import settings
     subprocess.call(['sudo', 'supervisorctl', 'restart', 'jms:coco'])
+    res = send_mail('coco被[%s]重启' % req.user, '', settings.EMAIL_HOST_USER, ['daijian@flowself.com', ],
+                    fail_silently=False)
     return JsonResponse({'msg': 'get it'})
