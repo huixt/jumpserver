@@ -18,3 +18,6 @@ def finish_yestoday_sessions():
         .filter(is_finished=False) \
         .update(is_finished=True)
     logging.info('结束了：%s 个挂起进程', total)
+
+if __name__ == '__main__':
+    finish_yestoday_sessions()
