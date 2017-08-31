@@ -38,10 +38,8 @@ SECRET_KEY = CONFIG.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = CONFIG.DEBUG or False
 
-
 # Absolute url for some case, for example email link
 SITE_URL = CONFIG.SITE_URL or 'http://localhost'
-
 
 # LOG LEVEL
 LOG_LEVEL = 'DEBUG' if DEBUG else CONFIG.LOG_LEVEL or 'WARNING'
@@ -113,8 +111,7 @@ LOGIN_URL = reverse_lazy('users:login')
 
 SESSION_COOKIE_DOMAIN = CONFIG.SESSION_COOKIE_DOMAIN or None
 CSRF_COOKIE_DOMAIN = CONFIG.CSRF_COOKIE_DOMAIN or None
-SESSION_COOKIE_AGE = CONFIG.SESSION_COOKIE_AGE or 3600*24
-
+SESSION_COOKIE_AGE = CONFIG.SESSION_COOKIE_AGE or 3600 * 24
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 # Database
@@ -197,6 +194,10 @@ LOGGING = {
             'formatter': 'main',
             'filename': os.path.join(PROJECT_DIR, 'logs', 'ansible.log')
         },
+    },
+    'root': {
+        'handlers': ['console', 'file'],
+        'level': 'INFO',
     },
     'loggers': {
         'django': {
@@ -302,7 +303,6 @@ AUTHENTICATION_BACKENDS = [
 # Custom User Auth model
 AUTH_USER_MODEL = 'users.User'
 
-
 # Auth LDAP settings
 if CONFIG.AUTH_LDAP:
     AUTHENTICATION_BACKENDS.insert(0, 'django_auth_ldap.backend.LDAPBackend')
@@ -313,10 +313,9 @@ AUTH_LDAP_USER_DN_TEMPLATE = CONFIG.AUTH_LDAP_USER_DN_TEMPLATE
 AUTH_LDAP_START_TLS = CONFIG.AUTH_LDAP_START_TLS
 AUTH_LDAP_USER_ATTR_MAP = CONFIG.AUTH_LDAP_USER_ATTR_MAP
 
-
 # Celery using redis as broker
 BROKER_URL = 'redis://:%(password)s@%(host)s:%(port)s/3' % {
-    'password': CONFIG.REDIS_PASSWORD  if CONFIG.REDIS_PASSWORD else '',
+    'password': CONFIG.REDIS_PASSWORD if CONFIG.REDIS_PASSWORD else '',
     'host': CONFIG.REDIS_HOST or '127.0.0.1',
     'port': CONFIG.REDIS_PORT or 6379,
 }
@@ -355,7 +354,6 @@ CAPTCHA_TEST_MODE = CONFIG.CAPTCHA_TEST_MODE
 
 COMMAND_STORE_BACKEND = 'audits.backends.command.db'
 RECORD_STORE_BACKEND = 'audits.backends.record.db'
-
 
 # Django bootstrap3 setting, more see http://django-bootstrap3.readthedocs.io/en/latest/settings.html
 BOOTSTRAP3 = {
