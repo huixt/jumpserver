@@ -1,4 +1,4 @@
-from fabric.api import env, put, run
+from fabric.api import cd, env, put, run
 from fabric.colors import cyan
 from fabric.contrib.console import confirm
 from fabric.utils import warn
@@ -46,3 +46,9 @@ def create_jms_user():
         update_secret()
 
     print(cyan('操作完成'))
+
+
+def pub():
+    """生产发布"""
+    with cd('/data/prd/jumpserver'):
+        run('git pull')

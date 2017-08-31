@@ -3,6 +3,7 @@
 import time
 from datetime import datetime
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, UpdateView, DeleteView, DetailView, TemplateView
 from django.views.generic.edit import SingleObjectMixin
 from django.utils.translation import ugettext as _
@@ -19,7 +20,7 @@ from audits.backends import command_store
 from audits.backends import CommandLogSerializer
 
 
-class ProxyLogListView(AdminUserRequiredMixin, ListView):
+class ProxyLogListView(LoginRequiredMixin, ListView):
     model = ProxyLog
     template_name = 'audits/proxy_log_online_list.html'
     context_object_name = 'proxy_log_list'
@@ -158,7 +159,7 @@ class ProxyLogDetailView(AdminUserRequiredMixin,
 #         return list(self.object.command_log.all())
 
 
-class CommandLogListView(AdminUserRequiredMixin, ListView):
+class CommandLogListView(LoginRequiredMixin, ListView):
     template_name = 'audits/command_log_list.html'
     paginate_by = settings.CONFIG.DISPLAY_PER_PAGE
     context_object_name = 'command_list'
@@ -222,7 +223,7 @@ class CommandLogListView(AdminUserRequiredMixin, ListView):
         return super(CommandLogListView, self).get_context_data(**kwargs)
 
 
-class LoginLogListView(AdminUserRequiredMixin, ListView):
+class LoginLogListView(LoginRequiredMixin, ListView):
     model = LoginLog
     paginate_by = settings.CONFIG.DISPLAY_PER_PAGE
     template_name = 'audits/login_log_list.html'
