@@ -5,12 +5,12 @@ import os
 
 from django import setup
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "apps.jumpserver.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "jumpserver.settings")
 setup()
 
 
 def finish_yestoday_sessions():
-    from apps.audits.models import ProxyLog
+    from audits.models import ProxyLog
     import datetime
     two_days_ago = datetime.datetime.today() - datetime.timedelta(2)
     total = ProxyLog.objects \
