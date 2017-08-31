@@ -24,3 +24,5 @@ tags
 jumpserver.iml
 .python-version
 tmp/*
+data/
+nohup.out
