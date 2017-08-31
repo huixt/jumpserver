@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'audits.apps.AuditsConfig',
     'common.apps.CommonConfig',
     'applications.apps.ApplicationsConfig',
+    'kronos',
     'rest_framework',
     'rest_framework_swagger',
     'django_filters',
