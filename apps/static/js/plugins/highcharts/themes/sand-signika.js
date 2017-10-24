@@ -4,11 +4,11 @@
  */
 
 // Load the fonts
-Highcharts.createElement('link', {
-	href: 'https://fonts.css.network/css?family=Signika:400,700',
-	rel: 'stylesheet',
-	type: 'text/css'
-}, null, document.getElementsByTagName('head')[0]);
+// Highcharts.createElement('link', {
+// 	href: 'https://fonts.css.network/css?family=Signika:400,700',
+// 	rel: 'stylesheet',
+// 	type: 'text/css'
+// }, null, document.getElementsByTagName('head')[0]);
 
 // Add the background image to the container
 Highcharts.wrap(Highcharts.Chart.prototype, 'getContainer', function (proceed) {
@@ -94,7 +94,7 @@ Highcharts.theme = {
 
 	// General
 	background2: '#E0E0E8'
-	
+
 };
 
 // Apply the theme

@@ -4,11 +4,11 @@
  */
 
 // Load the fonts
-Highcharts.createElement('link', {
-	href: 'https://fonts.css.network/css?family=Dosis:400,600',
-	rel: 'stylesheet',
-	type: 'text/css'
-}, null, document.getElementsByTagName('head')[0]);
+// Highcharts.createElement('link', {
+// 	href: 'https://fonts.css.network/css?family=Dosis:400,600',
+// 	rel: 'stylesheet',
+// 	type: 'text/css'
+// }, null, document.getElementsByTagName('head')[0]);
 
 Highcharts.theme = {
 	colors: ["#7cb5ec", "#f7a35c", "#90ee7e", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
@@ -67,7 +67,7 @@ Highcharts.theme = {
 
 	// General
 	background2: '#F0F0EA'
-	
+
 };
 
 // Apply the theme

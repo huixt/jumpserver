@@ -4,11 +4,11 @@
  */
 
 // Load the fonts
-Highcharts.createElement('link', {
-	href: 'https://fonts.css.network/css?family=Unica+One',
-	rel: 'stylesheet',
-	type: 'text/css'
-}, null, document.getElementsByTagName('head')[0]);
+// Highcharts.createElement('link', {
+// 	href: 'https://fonts.css.network/css?family=Unica+One',
+// 	rel: 'stylesheet',
+// 	type: 'text/css'
+// }, null, document.getElementsByTagName('head')[0]);
 
 Highcharts.theme = {
 	colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
