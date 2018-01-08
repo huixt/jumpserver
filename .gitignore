@@ -26,3 +26,4 @@ jumpserver.iml
 tmp/*
 data/
 nohup.out
+logs/

@@ -1,0 +1,16 @@
+[Unit]
+Description=Jumpserver Service
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /data/prd/jumpserver/bin/start.sh
+KillMode=control-group
+KillSignal=SIGINT
+PrivateTmp=true
+User=pyer
+Group=pyer
+
+[Install]
+WantedBy=multi-user.target
+
