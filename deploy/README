@@ -1,0 +1,16 @@
+systemd 与 supervisord 这两个守护进程，随便挑一个都可以用。但不要两个同时用。
+
+systemd：脚本拷到
+
+/etc/systemd.d/system/
+然后
+systemctl daemon-reload
+systemctl enable jumpserver
+systemctl start jumpserver
+
+supervisord 脚本拷到
+/etc/supervisord.d/
+然后
+supervisorctl reload
+supervisorctl start jms1
+
